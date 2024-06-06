@@ -1,0 +1,17 @@
+#messages{
+    max-height: 600px; /* Adjust the max height as needed */
+    overflow-y: auto; /* Add vertical scrollbar when content overflows */
+    padding: 10px; /* Optional: Add some padding for better appearance */
+    border: 1px solid #ccc; /* Optional: Add a border to visually separate the message area */
+    border-radius: 5px; /* Optional: Add some border radius for rounded corners */
+    background-color: #f9f9f9;
+    scroll-behavior: smooth; /* Optional: Background color for the messages container */
+  }
+  
+  /* Optional: Add some styling for the form container */
+  #new-message-form {
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 1px solid #ccc; /* Separate the form from the messages */
+    background-color: #fff; /* Ensure the form has a white background */
+  }

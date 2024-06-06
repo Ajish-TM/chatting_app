@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageMeRails7</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'custom', media: 'all', 'data-turbo-track': 'reload' %>  
+    <%= javascript_importmap_tags %>
+ </head>
+
+<body>
+  <%= render 'layouts/navbar' %>
+    <div class="container">
+        <% flash.each do |key, value| %>
+          <%# Map Rails flash types to Bootstrap alert classes %>
+          <% alert_class = case key
+                           when 'notice' then 'alert-success'
+                           when 'alert' then 'alert-danger'
+                           when 'error' then 'alert-danger'
+                           else 'alert-info'
+                           end %>
+          <div class="alert <%= alert_class %> alert-dismissible fade show" role="alert">
+            <%= value %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      </div>
+  <%= yield %>
+</body>
+</html>

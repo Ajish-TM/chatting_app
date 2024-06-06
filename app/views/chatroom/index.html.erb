@@ -1,0 +1,24 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card" style="border-radius: 15px;" data-controller="chat">
+          <!-- Render messages -->
+          <div id="messages" data-chat-target="messages">
+            <%= render @messages %>
+          </div>
+          <% Rails.logger.debug "Rendering messages in chatroom index view" %>
+
+          <!-- Form -->
+          <%= form_with(model: @message, url: messages_path, remote: true, html: { 'data-action': "keydown->chat#submitOnEnter" }) do |form| %>
+            <div class="form-group">
+              <%= form.label :body, "New Message" %>
+              <%= form.text_area :body, class: "form-control", rows: 3, 'data-chat-target': 'input' %>
+            </div>
+            <%= form.submit "Send", class: "btn btn-primary mt-2", 'data-chat-target': 'button' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
